@@ -1,0 +1,89 @@
+{
+  "name": "outline-config",
+  "displayName": "outline-config",
+  "publisher": "lioy",
+  "description": "",
+  "icon":"icon.webp",
+  "version": "0.0.3",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:outline-config.refreshMethods",
+    "onCommand:outline-config.navigateMethod"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "outline-config.helloWorld",
+        "title": "outline-config-Hello World"
+      },
+      {
+        "command": "outline-config.refreshMethods",
+        "title": "outline-config-刷新方法"
+      },
+      {
+        "command": "outline-config.navigateMethod",
+        "title": "outline-config-导航到方法"
+      }
+    ],
+    "configuration": {
+      "title": "Outline Config",
+      "properties": {
+        "outlineConfig.methods": {
+          "type": "array",
+          "default": [
+            "constructor",
+            "initData",
+            "componentDidMount",
+            "componentDidUpdate",
+            "render",
+            "created",
+            "data",
+            "watch",
+            "mounted",
+            "updated"
+          ],
+          "description": "List of methods to navigate to."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "methodsContainer",
+          "title": "Methods",
+          "icon": "./method-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "methodsContainer": [
+        {
+          "id": "methodsView",
+          "name": "Methods"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test",
+    "publish": "vsce publish",
+    "build": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.87.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8"
+  }
+}
